@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA 24</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: #fff;
+            opacity: 0; /* Start with hidden state */
+            animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #b30000;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+        }
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .search-bar {
+            padding: 8px;
+            width: 250px;
+            border-radius: 5px;
+            border: none;
+            background: #222;
+            color: white;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff4444;
+        }
+        .user-icon {
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .product-container {
+            display: flex;
+            margin: 40px auto;
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+        }
+        .product-image img {
+            width: 300px;
+            border-radius: 10px;
+            border: 2px solid #ff0000;
+        }
+        .product-details {
+            margin-left: 30px;
+        }
+        .tags {
+            color: #ff4444;
+            font-weight: bold;
+        }
+        .info-box {
+            background-color: #660000;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+        }
+        .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff4444;
+        }
+        .buy-btn {
+            background-color: #ff0000;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .buy-btn:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+        .description-container {
+            margin: 40px auto;
+            background-color: #1a1a1a;
+            padding: 25px;
+            border-radius: 10px;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+            opacity: 0; /* Hidden initially */
+            animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+        }
+
+        .description-container h2 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff4444;
+        }
+
+        .description-container p {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+        .modal-content h2 {
+            color: white;
+        }
+        .modal-content p {
+            color: #ccc;
+        }
+        .signin-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .signin-option img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .signin-option:hover {
+            background: #333;
+        }
+        .close {
+            color: white;
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .terms {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .terms a {
+            color: #ff4444;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="https://sites.google.com/view/kinetic-store1/home" target="_blank">
+                <img src="https://media.discordapp.net/attachments/1165589272699600926/1354096835941109842/Marks_Design-3_1.png?ex=67e55df3&is=67e40c73&hm=bcff15b346edd16f037e1b291258102abdde4bba147014d40b034d668d1f38b7&=&format=webp&quality=lossless" alt="Logo">
+                <span>KineTic Beta</span>
+            </a>
+        </div>
+        <input type="text" placeholder="Search..." class="search-bar">
+        <div class="nav-links">
+            <a href="#">PC</a>
+            <a href="#">PSN</a>
+            <a href="#">Nintendo</a>
+            <a href="#">Xbox</a>
+            <a href="#">Media</a>
+            <a href="#">Mobile</a>
+            <a href="#">Software</a>
+            <a href="#">Rewards</a>
+        </div>
+        <div class="user-icon" onclick="openModal()">&#128100;</div>
+    </nav>
+
+    <div class="product-container">
+        <div class="product-image">
+            <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2195250/capsule_616x353.jpg" alt="FIFA 24">
+        </div>
+        <div class="product-details">
+            <h1>FIFA 25 - Standard Edition</h1>
+            <p class="tags">Key | Instant Delivery | PC/Console</p>
+            <div class="info-box">
+                <p>🌍 Activation limited to selected regions</p>
+                <p>🎮 Play FIFA 24 on PC or Console</p>
+                <p>⚡ Get your key right away after you pay!</p>
+            </div>
+            <h2 class="price">44 TND</h2>
+            <button class="buy-btn" onclick="openModal()">Sign in to buy</button>
+        </div>
+    </div>
+
+    <!-- Description about FIFA -->
+    <div class="description-container">
+        <h2>About About The Game?</h2>
+        <p>EA SPORTS FC 25 offers more ways to win for your club.</p>
+    </div>
+
+    <!-- Sign-In Modal -->
+    <div id="signin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Let's Get You Started</h2>
+            <p>Sign in with Discord to explore great offers!</p>
+            <!-- Updated href link with your Client ID and redirect URI -->
+            <a href="https://discord.com/oauth2/authorize?client_id=1354614719901863997&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fcallback&scope=identify+email">
+                <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDb6rYcBtJvTvH3UoAS4JFNDaxGhmKNaMwgElLURlRFeVkLCjkfnXmWtINWZIrPGYq0-&format=source"> Sign in with Discord
+            </a>
+            <div class="terms">
+                <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById("signin-modal").style.display = "flex"; }
+        function closeModal() { document.getElementById("signin-modal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target === document.getElementById("signin-modal")) closeModal(); }
+    </script>
+</body>
+</html>
